@@ -8,30 +8,35 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import debug from 'debug';
 
+// Import Routes
+import routes from './routes/index.js';
+import users from './routes/users.js';
+
 // Create Log
 const log = debug('Job Scrape');
-
-// Import Routes
-import routes from './routes/index';
-import users from './routes/users';
 
 // Creating Express App
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+// Getting Directory
+const __dirname = path.resolve();
 
-// uncomment after placing your favicon in /public
+// Using Middleware
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
+// Using Routes
 app.use('/', routes);
 app.use('/users', users);
+
+// Serve static React files only in production
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -40,32 +45,11 @@ app.use(function (req, res, next) {
     next(err);
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function (err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
-
+// Set Port
 app.set('port', process.env.PORT || 3000);
 
+// Start Server
 var server = app.listen(app.get('port'), function () {
-    debug('Express server listening on port ' + server.address().port);
+    log('Express server listening on port ' + server.address().port); 
 });
+

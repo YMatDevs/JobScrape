@@ -31,12 +31,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Backend\app.js" />
+    <Content Include="Backend\DBcontroller\DBConn.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Backend\DBcontroller\fetchJobs.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Backend\routes\index.js" />
     <Content Include="Backend\routes\users.js" />
-    <Content Include="Backend\views\error.pug" />
-    <Content Include="Backend\views\index.pug" />
-    <Content Include="Backend\views\layout.pug" />
     <Content Include="frontend\.gitignore" />
+    <Content Include="frontend\build\asset-manifest.json" />
+    <Content Include="frontend\build\index.html" />
+    <Content Include="frontend\build\manifest.json" />
+    <Content Include="frontend\build\static\js\main.dc14ef4b.js" />
+    <Content Include="frontend\build\static\js\main.dc14ef4b.js.LICENSE.txt" />
+    <Content Include="frontend\build\static\js\main.dc14ef4b.js.map" />
     <Content Include="frontend\node_modules\.package-lock.json" />
     <Content Include="frontend\node_modules\css-minimizer-webpack-plugin\LICENSE" />
     <Content Include="frontend\node_modules\css-minimizer-webpack-plugin\node_modules\source-map\CHANGELOG.md" />
@@ -17909,19 +17918,31 @@
     <Content Include="frontend\public\index.html" />
     <Content Include="frontend\public\manifest.json" />
     <Content Include="frontend\README.md" />
+    <Content Include="frontend\src\api\apiService.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="frontend\src\App.js" />
+    <Content Include="frontend\src\components\SearchBar.jsx">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="frontend\src\components\JobTable.jsx">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="frontend\src\index.js" />
+    <Content Include="frontend\src\pages\Contact.jsx" />
+    <Content Include="frontend\src\pages\Home.jsx" />
+    <Content Include="frontend\src\pages\Landing.jsx" />
     <Content Include="package.json" />
-    <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Backend\" />
-    <Folder Include="Backend\public\" />
-    <Folder Include="Backend\public\images\" />
+    <Folder Include="Backend\DBcontroller\" />
     <Folder Include="Backend\routes\" />
-    <Folder Include="Backend\views\" />
     <Folder Include="frontend\" />
+    <Folder Include="frontend\build\" />
+    <Folder Include="frontend\build\static\" />
+    <Folder Include="frontend\build\static\js\" />
     <Folder Include="frontend\node_modules\" />
     <Folder Include="frontend\node_modules\%40adobe\" />
     <Folder Include="frontend\node_modules\%40alloc\" />
@@ -20937,11 +20958,8 @@
     <Folder Include="frontend\public\" />
     <Folder Include="frontend\src\" />
     <Folder Include="frontend\src\components\" />
+    <Folder Include="frontend\src\api\" />
     <Folder Include="frontend\src\pages\" />
-    <Folder Include="public\" />
-    <Folder Include="public\images\" />
-    <Folder Include="public\javascripts\" />
-    <Folder Include="public\stylesheets\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="frontend\node_modules\css-minimizer-webpack-plugin\node_modules\source-map\source-map.d.ts" />
