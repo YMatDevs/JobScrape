@@ -16,7 +16,7 @@ router.get('/api/getJobs', async (req, res) => {
         for (const job of searchList) {
             jobList = jobList.concat(await fetchJobs(job));
         }
-        
+
         res.status(200).json(jobList);
     }
     catch (error) {

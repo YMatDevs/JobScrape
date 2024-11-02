@@ -22,6 +22,9 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.11.3",
     "pug": "^2.0.0-beta6",
+    "puppeteer": "^23.6.1",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
