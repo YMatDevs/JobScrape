@@ -93,7 +93,6 @@ async function fetchJobs(jobTitle) {
 
 
         } else {
-            console.log(rows);
             return rows;
         }
 
