@@ -25,6 +25,7 @@
     "puppeteer": "^23.6.1",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "react-wordcloud": "^1.2.7",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {

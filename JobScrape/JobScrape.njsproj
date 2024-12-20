@@ -17928,8 +17928,17 @@
     <Content Include="frontend\src\components\JobTable.jsx">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="frontend\src\components\WordCloud.jsx">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="frontend\src\index.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="frontend\src\index.js" />
     <Content Include="frontend\src\pages\Contact.jsx" />
+    <Content Include="frontend\src\pages\Home.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="frontend\src\pages\Home.jsx" />
     <Content Include="frontend\src\pages\Landing.jsx" />
     <Content Include="package.json" />

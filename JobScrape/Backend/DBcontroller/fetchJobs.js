@@ -31,6 +31,9 @@ async function NaukriscrapeJobs(jobTitle) {
             const website_id = 1;
             const link = jobElement.querySelector('.title')?.href.trim();
             const days = jobElement.querySelector('span.job-post-day').innerHTML.trim();
+            const tags = jobElement.querySelectorAll('.tag-li');
+            const TagList = Array.from(tags).map(tag => tag.innerHTML);
+
 
             // Debugging missing elements
             if (!job_title) console.log(`Missing job title on Naukri.com!`);
@@ -49,7 +52,8 @@ async function NaukriscrapeJobs(jobTitle) {
                     salary,
                     location,
                     link,
-                    days
+                    days,
+                    TagList
                 });
             }
         });
@@ -70,33 +74,16 @@ async function fetchJobs(jobTitle) {
             console.log("DB does not have this JOB, will now scrape from net");
             rows = await NaukriscrapeJobs(jobTitle);
 
-            const insertQuery = `
-                INSERT INTO joblisting 
-                (post, website_id, job_title, company, experience, salary, location, link, days) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
-`;
+            db.execute('CALL InsertJobListings(?)', [rows]);
 
-            // Inserting each job record into the table
-            for (const job of rows) {
-                await db.promise().query(insertQuery, [
-                    jobTitle,          // post
-                    job.website_id,    // website_id
-                    job.job_title,     // job_title
-                    job.company,       // company
-                    job.experience,    // experience
-                    job.salary,        // salary
-                    job.location,      // location
-                    job.link,          // link
-                    job.days           // days
-                ]);
-            }
+            const tag = Array.from(rows).map(obj => obj.TagList);
+            const tags = [].concat(...tag);
+            db.execute('CALL InsertTags(?, ?)', [tags, jobTitle]);
 
-
-        } else {
-            return rows;
-        }
+        } 
 
         return rows;
+
     } catch (error) {
         console.error("Error fetching jobs:", error);
         return null;
